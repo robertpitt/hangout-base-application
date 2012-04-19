@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Module>
+  <ModulePrefs title="Application Framework">
+    <Require feature="rpc"/>
+    <Require feature="views"/>
+  </ModulePrefs>
+  <Content type="html">
+    <![CDATA[
+      <link rel="stylesheet" href="//%DOMAIN%/stylesheets/reset.css" type="text/css" media="print">
+      <link rel="stylesheet" href="//%DOMAIN%/stylesheets/base.css" type="text/css" media="print">
+      <script src="//talkgadget.google.com/hangouts/api/hangout.js?v=1.0"></script>
+      <script src="//%DOMAIN%/javascripts/application.js"></script>
+    ]]>
+  </Content>
+</Module>
