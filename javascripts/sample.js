@@ -34,6 +34,11 @@
 		console.log("Initialize.b");
 	};
 
+	Application.prototype.onMicrophoneMute = function(event)
+	{
+		console.log("Works", event)
+	}
+
 	/*
 	 * Instantiate and export
 	*/
