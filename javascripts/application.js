@@ -144,7 +144,56 @@
 
 	HangoutApplication.prototype.initialize = function()
 	{
-		console.log("Initialize.a");
+	}
+
+	HangoutApplication.prototype.getEnabledParticipants = function()
+	{
+		return gap.hangout.getEnabledParticipants();
+	}
+
+	HangoutApplication.prototype.getHangoutUrl = function()
+	{
+		return gap.hangout.getHangoutUrl();
+	}
+
+	HangoutApplication.prototype.getHangoutId = function()
+	{
+		return gap.hangout.getHangoutId();
+	}
+
+	HangoutApplication.prototype.getLocale = function()
+	{
+		return gap.hangout.getLocale();
+	}
+
+	HangoutApplication.prototype.getParticipantById = function(id)
+	{
+		return gap.hangout.getParticipantById(id);
+	}
+
+	HangoutApplication.prototype.getParticipantId = function()
+	{
+		return gap.hangout.getParticipantId();
+	}
+
+	HangoutApplication.prototype.getParticipants = function()
+	{
+		return gap.hangout.getParticipantById();
+	}
+
+	HangoutApplication.prototype.hideApp = function()
+	{
+		return gap.hangout.hideApp();
+	}
+
+	HangoutApplication.prototype.isApiReady = function()
+	{
+		return gap.hangout.isApiReady();
+	}
+
+	HangoutApplication.prototype.isAppVisible = function()
+	{
+		return gap.hangout.isApiReady();
 	}
 
 	/**

@@ -27,16 +27,26 @@
 	Application.prototype = new global["HangoutApplication"]();
 
 	/*
-	 * initialize
+	 * Initialize
 	*/
 	Application.prototype.initialize = function()
 	{
-		console.log("Initialize.b");
+		/*
+		 * Test
+		*/
+		console.log("this.getEnabledParticipants()", this.getEnabledParticipants());
+		console.log("this.getHangoutUrl()", this.getHangoutUrl());
+		console.log("this.getHangoutId()", this.getHangoutId());
+		console.log("this.getLocale()", this.getLocale());
+		console.log("this.getParticipantById()", this.getParticipantById());
+		console.log("this.getParticipantId()", this.getParticipantId());
+		console.log("this.getParticipants()", this.getParticipants());
+		console.log("this.isApiReady()", this.isApiReady());
+		console.log("this.isAppVisible()", this.isAppVisible());
 	};
 
 	Application.prototype.onMicrophoneMute = function(event)
 	{
-		console.log("Works", event)
 	}
 
 	/*
