@@ -33,11 +33,48 @@
 	*/
 	var eventsBound = false;
 
+	/*
+	 * @eventMap
+	 * A key/value map to bind gapi to application
+	*/
+	var eventMap = {
+		"hangout" : {
+			"onAppVisible"					: "onAppVisible",
+			"onEnabledParticipantsChanged"	: "onEnabledParticipantsChanged",
+			"onParticipantsAdded"			: "onParticipantsAdded",
+			"onParticipantsChanged"			: "onParticipantsChanged",
+			"onParticipantsDisabled"		: "onParticipantsDisabled",
+			"onParticipantsEnabled"			: "onParticipantsEnabled",
+			"av" : {
+				"onCameraMute"		: "onCameraMute",
+				"onHasCamera"		: "onHasCamera",
+				"onHasMicrophone"	: "onHasMicrophone",
+				"onHasSpeakers"		: "onHasSpeakers",
+				"onMicrophoneMute"	: "onMicrophoneMute",
+				"onVolumesChanged"	: "onVolumesChanged"
+			},
+			"effects" : {
+				"FaceTrackingFeature" : "FaceTrackingFeature"
+			},
+			"data" : {
+				"onStateChanged" : "onStateChanged"
+			},
+			"layout" : {
+				"onChatpaneVisible" : "onChatpaneVisible"
+				"onHasNotice" : "onHasNotice"
+			}
+		}
+	};
+
 	/**
 	 * @constructor
 	 * This is fired immediately after the javascript has loaded
 	*/
-	function Application()
+	function HangoutApplication()
+	{
+	};
+
+	HangoutApplication.prototype._construct()
 	{
 		/**
 		 * Application type
@@ -51,13 +88,13 @@
 		 * Initialize event bindint
 		*/
 		this.initializeEventBinding();
-	};
+	}
 
 	/*
 	 * @initializeEventBinding
 	 * @private
 	*/
-	Application.prototype.initializeEventBinding = function()
+	HangoutApplication.prototype.initializeEventBinding = function()
 	{
 		if(eventsBound === true)
 		{
@@ -71,15 +108,46 @@
 	 * Event Handler for {gapi.hangout.onApiReadyevent}
 	 * @private
 	*/
-	Application.prototype.onGapiReady = function(event)
+	HangoutApplication.prototype.onGapiReady = function(event)
 	{
 		if(event.isApiReady === true)
 		{
+			/**
+			 * Map all events to a handler
+			*/
+			this.bindEventMap(gapi, eventMap);
+
+			/*
+			 * execute the main initilize method
+			*/
+			this.initialize();
 		}
 	};
 
+	HangoutApplication.prototype.bindEventMap = function(pointer, ns)
+	{
+		for(var evt in ns)
+		{
+			if(typeof ns[evt] == "string")
+			{
+				if(this[ns[evt]])
+				{
+					pointer[ns[evt]].add(this[ns[evt]].bind(this));
+				}
+			}
+			else if(typeof ns[evt] == "object")
+			{
+				this.bindEventMap(pointer[evt], ns[evt])
+			}
+		}
+	}
+
+	HangoutApplication.prototype.initialize = function()
+	{
+	}
+
 	/**
-	 * Export the instantiated application to the global namespace
+	 * Export the application to the global namespace
 	*/
-	exports["__Application"] = new Application();
+	exports["HangoutApplication"] = HangoutApplication;
 })(window || {})

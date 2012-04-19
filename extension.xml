@@ -10,6 +10,7 @@
       <link rel="stylesheet" href="//%DOMAIN%/stylesheets/base.css" type="text/css" media="print">
       <script src="//talkgadget.google.com/hangouts/api/hangout.js?v=1.0"></script>
       <script src="//%DOMAIN%/javascripts/application.js"></script>
+      <script src="//%DOMAIN%/javascripts/sample.js"></script>
     ]]>
   </Content>
 </Module>
