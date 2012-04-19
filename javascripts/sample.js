@@ -22,6 +22,7 @@
 	{
 		this._constructor();
 	};
+	
 	//inherit
 	Application.prototype = new global["HangoutApplication"]();
 

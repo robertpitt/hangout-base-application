@@ -61,7 +61,7 @@
 			},
 			"layout" : {
 				"onChatpaneVisible" : "onChatpaneVisible"
-				"onHasNotice" : "onHasNotice"
+				"onHasNotice" 		: "onHasNotice"
 			}
 		}
 	};
