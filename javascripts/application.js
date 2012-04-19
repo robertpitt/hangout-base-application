@@ -60,7 +60,7 @@
 				"onStateChanged" : "onStateChanged"
 			},
 			"layout" : {
-				"onChatpaneVisible" : "onChatpaneVisible"
+				"onChatpaneVisible" : "onChatpaneVisible",
 				"onHasNotice" 		: "onHasNotice"
 			}
 		}
@@ -126,24 +126,25 @@
 
 	HangoutApplication.prototype.bindEventMap = function(pointer, ns)
 	{
-		for(var evt in ns)
+		for(var gapiKey in ns)
 		{
-			if(typeof ns[evt] == "string")
+			if(typeof ns[gapiKey] == "string")
 			{
-				if(this[ns[evt]])
+				if(this[ns[gapiKey]])
 				{
-					pointer[ns[evt]].add(this[ns[evt]].bind(this));
+					pointer[ns[gapiKey]].add(this[ns[gapiKey]].bind(this));
 				}
 			}
-			else if(typeof ns[evt] == "object")
+			else if(typeof ns[gapiKey] == "object")
 			{
-				this.bindEventMap(pointer[evt], ns[evt])
+				this.bindEventMap(pointer[gapiKey], ns[gapiKey]);
 			}
 		}
 	}
 
 	HangoutApplication.prototype.initialize = function()
 	{
+		console.log("Initialize.a");
 	}
 
 	/**

@@ -22,7 +22,7 @@
 	{
 		this._constructor();
 	};
-	
+
 	//inherit
 	Application.prototype = new global["HangoutApplication"]();
 
@@ -31,12 +31,12 @@
 	*/
 	Application.prototype.initialize = function()
 	{
-		console.log("Everything is ready");
-	}
+		console.log("Initialize.b");
+	};
 
 	/*
 	 * Instantiate and export
 	*/
 	global["app"] = new Application();
 
-})(window || {})
+})(window || {});
