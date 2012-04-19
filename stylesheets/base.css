@@ -1,0 +1,32 @@
+body
+{
+    color: #222;
+    font: normal 13px arial,sans-serif;
+    line-height: 18px;
+}
+
+#application{
+    background: white;
+    border: 0px solid #D9D9D9;
+    width: 100%;
+}
+
+#header{
+    background: #F3F3F3;
+    font-size: 11px;
+    line-height: 24px;
+    font-weight: bold;
+    border-bottom: 1px solid #D9D9D9;
+    padding: 0 10px;
+}
+
+#header span{
+
+}
+
+#header img{
+	position: relative;
+	top: 4px;
+	margin-right: 10px;
+}
+

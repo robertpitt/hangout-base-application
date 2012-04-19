@@ -29,28 +29,35 @@
 	//inherit
 	Application.prototype = new global["HangoutApplication"]();
 
+	Application.prototype.setHeader = function(title, icon)
+	{
+		if(!document.getElementById("header"))
+		{
+			var header = document.createElement("div");
+			var titlec = document.createElement("span");
+			header.setAttribute("id", "header");
+			if(icon){
+				var header_icon = document.createElement("img");
+				header_icon.setAttribute("id", "header_icon");
+				header_icon.setAttribute("src", icon);
+				header_icon.setAttribute("width", "16");
+				header_icon.setAttribute("height", "16");
+				header.appendChild(header_icon);
+			}
+			titlec.setAttribute("id", "title");
+			header.appendChild(titlec);
+			this.getAppContainer().appendChild(header);
+		}
+		document.getElementById("title").innerHTML = title;
+	}
+	
 	/*
 	 * Initialize
 	 * Fired by parent context
 	*/
 	Application.prototype.initialize = function()
 	{
-		/*
-		 * Test
-		*/
-		try{
-			console.log("this.getEnabledParticipants()", this.getEnabledParticipants());
-			console.log("this.getHangoutUrl()", this.getHangoutUrl());
-			console.log("this.getHangoutId()", this.getHangoutId());
-			console.log("this.getLocale()", this.getLocale());
-			console.log("this.getParticipantId()", this.getParticipantId());
-			console.log("this.getParticipants()", this.getParticipants());
-			console.log("this.isApiReady()", this.isApiReady());
-			console.log("this.isAppVisible()", this.isAppVisible());
-		}catch(e)
-		{
-			console.log(e);
-		}
+		this.addAppHeader("Sample Application", "//tolxdorff.appspot.com/a/lowerthird/i/16x16_logo.png");
 	};
 
 	Application.prototype.onMicrophoneMute = function(event)

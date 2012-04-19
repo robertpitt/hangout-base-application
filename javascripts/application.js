@@ -19,15 +19,6 @@
 (function(exports){
 
 	/*
-	 * Application type enumeration
-	 * @global
-	*/
-	var ApplicationTypes = {
-		EXTENSION : 0,
-		APPLICATION : 1
-	};
-
-	/*
 	 * @eventBound
 	 * boolean to assure events are not bound more then once
 	*/
@@ -72,18 +63,11 @@
 	*/
 	function HangoutApplication()
 	{
+		this._appContainer = null;
 	};
 
 	HangoutApplication.prototype._construct = function(context)
 	{
-		/**
-		 * Application type
-		 * Use one of the following:
-		 * * ApplicationTypes.APPLICATION
-		 * * ApplicationTypes.EXTENSION
-		*/
-		this.applicationtype = ApplicationTypes.APPLICATION;
-
 		/*
 		 * Initialize event bindint
 		*/
@@ -117,10 +101,22 @@
 			*/
 			this.bindEventMap(gapi, eventMap);
 
+			/**
+			 * Create Application Container
+			*/
+			this._appContainer = document.createElement("div");
+			this._appContainer.setAttribute("id", "application");
+			document.body.appendChild(this._appContainer);
+
 			/*
 			 * execute the main initilize method
 			*/
-			this.initialize();
+			try{
+				this.initialize();
+			}
+			catch(e){
+				console.log("Caught Exception: ", e);
+			}
 		}
 	};
 
@@ -146,54 +142,64 @@
 	{
 	}
 
+	HangoutApplication.prototype.getAppContainer = function()
+	{
+		return this._appContainer;
+	}
+
+	HangoutApplication.prototype.addAppHeader = function(title, icon)
+	{
+		
+	}
+
 	HangoutApplication.prototype.getEnabledParticipants = function()
 	{
-		return gap.hangout.getEnabledParticipants();
+		return gapi.hangout.getEnabledParticipants();
 	}
 
 	HangoutApplication.prototype.getHangoutUrl = function()
 	{
-		return gap.hangout.getHangoutUrl();
+		return gapi.hangout.getHangoutUrl();
 	}
 
 	HangoutApplication.prototype.getHangoutId = function()
 	{
-		return gap.hangout.getHangoutId();
+		return gapi.hangout.getHangoutId();
 	}
 
 	HangoutApplication.prototype.getLocale = function()
 	{
-		return gap.hangout.getLocale();
+		return gapi.hangout.getLocale();
 	}
 
 	HangoutApplication.prototype.getParticipantById = function(id)
 	{
-		return gap.hangout.getParticipantById(id);
+		return gapi.hangout.getParticipantById(id);
 	}
 
 	HangoutApplication.prototype.getParticipantId = function()
 	{
-		return gap.hangout.getParticipantId();
+		return gapi.hangout.getParticipantId();
 	}
 
 	HangoutApplication.prototype.getParticipants = function()
 	{
-		return gap.hangout.getParticipantById();
+		return gapi.hangout.getParticipants();
 	}
 
 	HangoutApplication.prototype.hideApp = function()
 	{
-		return gap.hangout.hideApp();
+		return gapi.hangout.hideApp();
 	}
 
 	HangoutApplication.prototype.isApiReady = function()
 	{
-		return gap.hangout.isApiReady();
+		return gapi.hangout.isApiReady();
 	}
 
 	HangoutApplication.prototype.isAppVisible = function()
 	{
-		return gap.hangout.isApiReady();
+		return gapi.hangout.isApiReady();
 	}
 
 	/**
