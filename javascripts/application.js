@@ -74,7 +74,7 @@
 	{
 	};
 
-	HangoutApplication.prototype._construct = function()
+	HangoutApplication.prototype._construct = function(context)
 	{
 		/**
 		 * Application type

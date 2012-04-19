@@ -20,7 +20,10 @@
 
 	function Application()
 	{
-		this._construct();
+		/*
+		 * We call the construct to inform the backend to bind all events
+		*/
+		this._construct(this);
 	};
 
 	//inherit
@@ -28,6 +31,7 @@
 
 	/*
 	 * Initialize
+	 * Fired by parent context
 	*/
 	Application.prototype.initialize = function()
 	{
@@ -38,7 +42,6 @@
 		console.log("this.getHangoutUrl()", this.getHangoutUrl());
 		console.log("this.getHangoutId()", this.getHangoutId());
 		console.log("this.getLocale()", this.getLocale());
-		console.log("this.getParticipantById()", this.getParticipantById());
 		console.log("this.getParticipantId()", this.getParticipantId());
 		console.log("this.getParticipants()", this.getParticipants());
 		console.log("this.isApiReady()", this.isApiReady());
