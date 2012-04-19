@@ -20,7 +20,7 @@
 
 	function Application()
 	{
-		this._constructor();
+		this._construct();
 	};
 
 	//inherit
